@@ -65,13 +65,13 @@ function Login() {
   });
   return (
 
-<div class="login-wrapper">
-    <form  class="form"  onSubmit={(values) => {
+<div className="login-wrapper">
+    <form  className="form"  onSubmit={(values) => {
             formik.handleSubmit(values);
           }}>
       <img src="img/avatar.png" alt="" className="img"/>
       <h2>Login</h2>
-      <div class="input-group">
+      <div className="input-group">
         <input type="text"  id="email" required 
         value={formik.values.email}
         onChange={formik.handleChange}
@@ -84,7 +84,7 @@ function Login() {
       {formik.touched.email && formik.errors.email ? (
               <div className="error"> {formik.errors.email}</div>
             ) : null}
-      <div class="input-group">
+      <div className="input-group">
         <input type="password"  id="password" required 
         value={formik.values.password}
         onChange={formik.handleChange}
@@ -123,14 +123,14 @@ function Login() {
     
 
     <div id="forgot-pw">
-      <form class="form">
-        <a href="!#" class="close">&times;</a>
+      <form className="form">
+        <a href="!#" className="close">&times;</a>
         <h2>Reset Password</h2>
-        <div class="input-group">
+        <div className="input-group">
           <input type="email" name="email" id="email" required/>
           <label for="email">Email</label>
         </div>
-        <input type="submit" value="Submit" class="submit-btn"/>
+        <input type="submit" value="Submit" className="submit-btn"/>
       </form>
     </div>
     <ToastContainer/>

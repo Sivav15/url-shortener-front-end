@@ -49,13 +49,13 @@ function ForgotPassword() {
     },
   });
   return (
-    <div class="login-wrapper">
-    <form  class="form"  onSubmit={(values) => {
+    <div className="login-wrapper">
+    <form  className="form"  onSubmit={(values) => {
             formik.handleSubmit(values);
           }}>
       <img src="img/avatar.png" className="img" alt=""/>
       <h2>Forgot Password</h2>
-      <div class="input-group">
+      <div className="input-group">
         <input type="text"  id="email" required 
         value={formik.values.email}
         onChange={formik.handleChange}

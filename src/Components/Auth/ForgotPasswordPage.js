@@ -61,16 +61,16 @@ function ForgotPasswordPage() {
     },
   });
   return (
-    <div class="login-wrapper">
+    <div className="login-wrapper">
       <form
-        class="form"
+        className="form"
         onSubmit={(values) => {
           formik.handleSubmit(values);
         }}
       >
         <img src="img/avatar.png" alt="" />
         <h2>Password Reset Form</h2>
-        <div class="input-group">
+        <div className="input-group">
           <input
             type="password"
             id="password"
@@ -86,7 +86,7 @@ function ForgotPasswordPage() {
           <div className="error"> {formik.errors.password}</div>
         ) : null}
 
-        <div class="input-group">
+        <div className="input-group">
           <input
             type="conformPassword"
             id="conformPassword"

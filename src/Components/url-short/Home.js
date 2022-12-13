@@ -119,34 +119,34 @@ function Home() {
     return (
         <div>
 
-            <div class="container">
-                <div class="row fixeds ">
-                    <div class="col-lg-12 text-center text-light">
+            <div className="container">
+                <div className="row fixeds ">
+                    <div className="col-lg-12 text-center text-light">
                         <h1>URL Shortener</h1>
                     </div>
                 
                 <form onSubmit={handleUrl}>
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <input type="text" name="longurl" class="form-control shadow-none" placeholder="Paste your long URL"
+                    <div className="row">
+                        <div className="input-group mb-3">
+                            <input type="text" name="longurl" className="form-control shadow-none" placeholder="Paste your long URL"
                                 aria-label="Recipient's username" aria-describedby="button-addon2" value={longUrl} onChange={(e) => setLongurl(e.target.value)} />
-                            <div class="input-group-append">
-                                <input type="submit" class="btn btn-outline-secondary" value="Submit" />
+                            <div className="input-group-append">
+                                <input type="submit" className="btn btn-outline-secondary" value="Submit" />
                             </div>
                         </div>
                     </div>
                 </form>
                 </div>
-                <div class="row">
+                <div className="row">
 
 
                     {
                         url.length > 0 && url.map((item, index) => {
-                            return <div class="col-lg-3" key={index}>
-                                <div class="card border-secondary mb-3 mx-auto boxs" >
-                                    <div class="card-header">Total Click : {item.clickCount}</div>
-                                    <div class="card-body text-secondary">
-                                        <h6 class="card-title">
+                            return <div className="col-lg-3" key={index}>
+                                <div className="card border-secondary mb-3 mx-auto boxs" >
+                                    <div className="card-header">Total Click : {item.clickCount}</div>
+                                    <div className="card-body text-secondary">
+                                        <h6 className="card-title">
                                             Short Url : <br />
                                             <a href={`${env.redirect}/${item.shortUrl}`} target="_blank" rel="noopener noreferrer" >{`${env.redirect}/${item.shortUrl}`}</a>
                                         </h6>
@@ -156,7 +156,7 @@ function Home() {
                                         <a href={item.longUrl} target="_blank" rel="noopener noreferrer" >{item.longUrl}</a>
                                        </h6>
                                     </div>
-                                    <button type="button" class="btn btn-danger" onClick={() => handleDelete(item._id)}>Delete</button>
+                                    <button type="button" className="btn btn-danger" onClick={() => handleDelete(item._id)}>Delete</button>
                                 </div>
                             </div>
                         })

@@ -72,13 +72,13 @@ function Register() {
 
   return (
     <>
-    <div class="login-wrapper">
-    <form  class="form"  onSubmit={(values) => {
+    <div className="login-wrapper">
+    <form  className="form"  onSubmit={(values) => {
             formik.handleSubmit(values);
           }}>
-      <img src="img/avatar.png" alt=""/>
+      <img src="img/avatar.png" alt="" className="img"/>
       <h2>Sign Up</h2>
-      <div class="input-group">
+      <div className="input-group">
         <input type="text"  id="name" required 
         value={formik.values.name}
         onChange={formik.handleChange}
@@ -91,7 +91,7 @@ function Register() {
       {formik.touched.name && formik.errors.name ? (
               <div className="error"> {formik.errors.name}</div>
             ) : null}
-      <div class="input-group">
+      <div className="input-group">
         <input type="text"  id="email" required 
         value={formik.values.email}
         onChange={formik.handleChange}
@@ -104,7 +104,7 @@ function Register() {
       {formik.touched.email && formik.errors.email ? (
               <div className="error"> {formik.errors.email}</div>
             ) : null} 
-      <div class="input-group">
+      <div className="input-group">
         <input type="password"  id="password" required 
         value={formik.values.password}
         onChange={formik.handleChange}
@@ -117,7 +117,7 @@ function Register() {
               <div className="error"> {formik.errors.password}</div>
             ) : null}
 
-<div class="input-group">
+<div className="input-group">
         <input type="password"  id="conformPassword" required 
         value={formik.values.conformPassword}
         onChange={formik.handleChange}
