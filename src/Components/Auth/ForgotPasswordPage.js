@@ -1,16 +1,29 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { env } from "../../config";
 import load from "../../asset/loading4.svg";
+import Swal from 'sweetalert2';
 
 function ForgotPasswordPage() {
   const params = useParams();
   let [loading, setloading] = useState(false);
   let navigate = useNavigate();
+
+
+    //Alert function;
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+  })
 
   const formik = useFormik({
     initialValues: {
@@ -49,10 +62,11 @@ function ForgotPasswordPage() {
 
         if (user.data.statusCode === 200) {
           setloading(false);
+          Toast.fire({ icon: 'success', title: user.data.message })
             navigate("/");
         }else{
           setloading(false);
-          toast.warn(user.data.message);
+          Toast.fire({ icon: 'error', title: user.data.message })
         }
        
       } catch (error) {
@@ -112,8 +126,6 @@ function ForgotPasswordPage() {
           <span onClick={() => navigate("/")}>Back to login</span>
         </div>
       </form>
-
-      <ToastContainer />
     </div>
   );
 }
