@@ -39,7 +39,10 @@ function Home() {
     const getUrl = async () => {
          try {
             let x = window.localStorage.getItem("id")
-            let data = await axios.get(`${env.api1}/all-Url/${x}`);
+            let data = await axios.get(`${env.api1}/all-Url/${x}`,{
+                headers: {
+                  authorization: window.localStorage.getItem("token")
+                }});
             setUrl(data.data.data)
          } catch (error) {
             console.log(error);
