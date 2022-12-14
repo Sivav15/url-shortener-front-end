@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import { useFormik } from "formik";
 import axios from "axios";
@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { env } from "../../config";
 import Swal from 'sweetalert2';
+import load from "../../asset/loading4.svg";
 
 
 
@@ -16,7 +17,7 @@ function Login() {
 
   let navigate = useNavigate();
 
-
+  let [loading, setloading] = useState(false);
 
 
 
@@ -43,9 +44,11 @@ function Login() {
 
     onSubmit: async (values) => {
       try {
+        setloading(true);
         let value = await axios.post(`${env.api}/login`, values);
         const { data } = value;
         const {message,statusCode, token, id} = data;
+        setloading(false);
         if (statusCode === 201) {
           window.localStorage.setItem("token", token);
           window.localStorage.setItem("id", id);
@@ -106,7 +109,12 @@ function Login() {
           </div>
       <button type="submit" className="submit-btn" disabled={!formik.isValid}>
            
-            Login
+            
+            {loading ? (
+            <img src={load} alt="load" className="spinner" />
+          ) : (
+            " Login "
+          )}
 
           </button>
       <div className="mt-3 new_user">
