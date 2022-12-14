@@ -16,6 +16,7 @@ function Model(props) {
         <Modal.Footer>
           <Button variant="secondary" onClick={() => {
           window.localStorage.removeItem("token")
+          window.localStorage.removeItem("id")
           props.handleClose()
           navigate("/")}} >
              <img src="./img/logout1.png" alt="logout" className='size'  /> {""}Logout

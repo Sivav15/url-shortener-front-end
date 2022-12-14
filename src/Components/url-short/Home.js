@@ -37,9 +37,13 @@ function Home() {
 
 
     const getUrl = async () => {
-
-        let data = await axios.get(`${env.api1}/all-Url`);
-        setUrl(data.data.data)
+         try {
+            let x = window.localStorage.getItem("id")
+            let data = await axios.get(`${env.api1}/all-Url/${x}`);
+            setUrl(data.data.data)
+         } catch (error) {
+            console.log(error);
+         }
     }
 
     useEffect(() => {
@@ -87,7 +91,11 @@ function Home() {
        
         e.preventDefault()
         try {
-            let v = await axios.post(`${env.api1}/create-url`, { longUrl },{
+    
+            let v = await axios.post(`${env.api1}/create-url`, {
+                id : window.localStorage.getItem("id"),
+                longUrl
+               },{
                 headers: {
                   authorization: window.localStorage.getItem("token")
                 }});
@@ -173,6 +181,7 @@ data = {data}
 />
 <div className='logout' onClick={() => {
           window.localStorage.removeItem("token")
+          window.localStorage.removeItem("id")
           
           navigate("/")}}>
 <img src="./img/logout1.png" alt="logout"   />

@@ -45,9 +45,10 @@ function Login() {
       try {
         let value = await axios.post(`${env.api}/login`, values);
         const { data } = value;
-        const {message,statusCode, token} = data;
+        const {message,statusCode, token, id} = data;
         if (statusCode === 201) {
           window.localStorage.setItem("token", token);
+          window.localStorage.setItem("id", id);
           Swal.fire(
             "Login Successfull",
             "Your session expiry in 5 minutes!",
