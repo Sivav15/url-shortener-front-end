@@ -88,7 +88,7 @@ function ForgotPasswordPage() {
 
         <div className="input-group">
           <input
-            type="conformPassword"
+            type="password"
             id="conformPassword"
             required
             value={formik.values.conformPassword}
