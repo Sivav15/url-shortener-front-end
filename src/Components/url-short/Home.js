@@ -49,7 +49,8 @@ function Home() {
                     setUrl(datas)
                 }
                 else {                   
-                    Toast.fire({ icon: 'error', title: message })
+                    setData({message})
+                    setShow(true)
                 }
 
          } catch (error) {
