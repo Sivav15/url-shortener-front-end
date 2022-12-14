@@ -146,29 +146,29 @@ function Home() {
                 </form>
                 </div>
                 <div className="row">
+{
+    url.length > 0 && url ? (url.length > 0 && url.map((item, index) => {
+        return <div className="col-lg-3" key={index}>
+            <div className="card border-secondary mb-3 mx-auto boxs" >
+                <div className="card-header">Total Click : {item.clickCount}</div>
+                <div className="card-body text-secondary">
+                    <h6 className="card-title">
+                        Short Url : <br />
+                        <a href={`${env.redirect}/${item.shortUrl}`} target="_blank" rel="noopener noreferrer" >{`${env.redirect}/${item.shortUrl}`}</a>
+                    </h6>
+                    Long Url : <br />
+                   <h6 className='long-url'>
+                   
+                    <a href={item.longUrl} target="_blank" rel="noopener noreferrer" >{item.longUrl}</a>
+                   </h6>
+                </div>
+                <button type="button" className="btn btn-danger" onClick={() => handleDelete(item._id)}>Delete</button>
+            </div>
+        </div>
+    })) : (<div className= "message" > <h3>No url are found. Add your long Url</h3> </div>)
+}
 
-
-                    {
-                        url.length > 0 && url.map((item, index) => {
-                            return <div className="col-lg-3" key={index}>
-                                <div className="card border-secondary mb-3 mx-auto boxs" >
-                                    <div className="card-header">Total Click : {item.clickCount}</div>
-                                    <div className="card-body text-secondary">
-                                        <h6 className="card-title">
-                                            Short Url : <br />
-                                            <a href={`${env.redirect}/${item.shortUrl}`} target="_blank" rel="noopener noreferrer" >{`${env.redirect}/${item.shortUrl}`}</a>
-                                        </h6>
-                                        Long Url : <br />
-                                       <h6 className='long-url'>
-                                       
-                                        <a href={item.longUrl} target="_blank" rel="noopener noreferrer" >{item.longUrl}</a>
-                                       </h6>
-                                    </div>
-                                    <button type="button" className="btn btn-danger" onClick={() => handleDelete(item._id)}>Delete</button>
-                                </div>
-                            </div>
-                        })
-                    }
+                  
 
 
                 </div>

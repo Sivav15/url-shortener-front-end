@@ -35,3 +35,8 @@ min-height: 20rem;
     background-color: white;
     cursor: pointer;
 }
+.message{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
