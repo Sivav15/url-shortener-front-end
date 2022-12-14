@@ -39,11 +39,19 @@ function Home() {
     const getUrl = async () => {
          try {
             let x = window.localStorage.getItem("id")
-            let data = await axios.get(`${env.api1}/all-Url/${x}`,{
+            let v = await axios.get(`${env.api1}/all-Url/${x}`,{
                 headers: {
                   authorization: window.localStorage.getItem("token")
                 }});
-            setUrl(data.data.data)
+                const { data } = v;
+                const { message, statusCode ,datas} = data
+                if (statusCode === 200) {
+                    setUrl(datas)
+                }
+                else {                   
+                    Toast.fire({ icon: 'error', title: message })
+                }
+
          } catch (error) {
             console.log(error);
          }
